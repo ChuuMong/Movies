@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 26
@@ -23,8 +25,37 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.google.code.findbugs', module: 'jsr305'
     })
-    compile 'com.android.support:appcompat-v7:26.+'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
+
+    //support lib
+    compile rootProject.ext.supportAppCompat
+    compile rootProject.ext.supportDesing
+
+    compile rootProject.ext.archRuntime
+    compile rootProject.ext.archExtension
+    kapt rootProject.ext.archCompiler
+
+    compile rootProject.ext.roomRuntime
+    kapt rootProject.ext.roomCompiler
+
+    compile rootProject.ext.okhttp
+    compile rootProject.ext.retrofit
+    compile rootProject.ext.gsonConverter
+
+    //dagger
+    kapt rootProject.ext.daggerCompiler
+    compile rootProject.ext.dagger
+    compile rootProject.ext.daggerAndroid
+    compile rootProject.ext.daggerAndroidSupport
+    kapt rootProject.ext.daggerAndroidProcessor
+
+    //ui
+    compile rootProject.ext.picasso
+
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }
