@@ -1,4 +1,4 @@
-package io.chuumong.movies.di.activity
+package io.chuumong.movies.di.fragment
 
 import dagger.Module
 
@@ -7,4 +7,6 @@ import dagger.Module
  */
 
 @Module
-abstract class AndroidBuilderModule {}
+abstract class FragmentBuilderModule {
+
+}
